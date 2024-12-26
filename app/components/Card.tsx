@@ -7,10 +7,7 @@ import { DataMock } from "../context/ContextProvider";
 
 function CardList({ id, titulo }) {
     const {mock, setMock} = useContext(DataMock)
-    const [completed, setCompleted] = useState(false)
-    const [reload,setReload] = useState(false)
     const cardMock = mock.find((e)=> e.id == id)
-   useEffect(()=>{},[mock])
 
 
     const handleDeleteButton = (id:number)=>{
@@ -33,31 +30,28 @@ function CardList({ id, titulo }) {
         !cardMock.completed 
         ?
         <div className="py-1 ">
-        <Card >
+        <Card className="h-20">
             <div className="flex justify-between items-center">
                 <div onClick={handleCompletedTask} className="flex space-x-2 cursor-pointer">
-                    <Checkbox  checked={completed}/>
+                    <Checkbox  checked={cardMock.completed}/>
                     <h1>{titulo}</h1>
                 </div>
-                <Button color="danger" className="z-50" variant="outlined" onClick={()=>{handleDeleteButton(id)}}><DeleteOutlined/></Button>
+                <Button color="danger" variant="outlined" onClick={()=>{handleDeleteButton(id)}}><DeleteOutlined/></Button>
             </div>
         </Card>
-    </div>
+      </div>
         :
-
         <div className="py-1">
-        <Card  className="relative z-10" styles={{body:{background:'#f5f5f5'}}}>
+        <Card  className=" h-20" styles={{body:{background:'#f5f5f5'}}}>
             <div className="flex justify-between items-center text-red-950">
                 <div onClick={handleCompletedTask} className="flex space-x-2 cursor-pointer">
-                    <Checkbox  className="range" checked={true} />
+                    <Checkbox  className="range" checked={cardMock.completed} />
                     <h1 className="text-gray-600"><s>{titulo} </s></h1>
                 </div>
-                <Button color="default" className="z-50" variant="outlined" style={{backgroundColor:"whitesmoke"}} onClick={()=>{handleDeleteButton(id)}}><DeleteOutlined style={{color:'GrayText'}}/></Button>
+                <Button color="default" variant="outlined" style={{backgroundColor:"whitesmoke"}} onClick={()=>{handleDeleteButton(id)}}><DeleteOutlined style={{color:'GrayText'}}/></Button>
             </div>
         </Card>
     </div>
-       
-        
     }
     </>
   );

@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import Card from "./components/Card";
 import { DataMock } from "./context/ContextProvider";
 import { Button, Form, Input } from "antd";
+import { PlusCircleOutlined } from "@ant-design/icons";
 
 function Page() {
   const { mock, setMock } = useContext(DataMock);
@@ -17,17 +18,22 @@ function Page() {
 
   return (
     <>
-    <div className=" md:w-[75vh]  px-2">
+    <div className=" md:w-[100vh]  px-2">
       <Form 
       form={form} 
       onFinish={onFinish}
       className="flex justify-center space-x-4 p-2"
       >
         <Form.Item className="w-full" name="titulo">
-          <Input className="p-2" placeholder="Adicione uma nova tarefa"></Input>
+          <Input className="p-2 py-3" placeholder="Adicione uma nova tarefa"></Input>
         </Form.Item>
         <Form.Item>
-          <Button  className="h-10 flex text-center justify-center text-base font-semibold" type="primary" htmlType="submit">Criar</Button>
+          <Button  className="py-6 flex justify-center items-center align-middle text-base font-semibold" type="primary" htmlType="submit">
+            <div className="flex space-x-1">
+              <p>Criar</p>
+              <PlusCircleOutlined className="text-xl"/>
+            </div>
+            </Button>
         </Form.Item>
       </Form>
       <div className="flex justify-between p-2 font-semibold text-sm">

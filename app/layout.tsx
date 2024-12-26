@@ -33,7 +33,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Layout className="min:h-full flex h-[100vh]">
-          <Header className=" bg-gray-900 flex justify-center items-center min-h-24 mb-9"><h1 className="mt-2 text-4xl font-semibold text-gray-50">ToDo</h1></Header>
+          <Header className=" bg-zinc-300 flex justify-center items-center min-h-24 mb-9">
+            <h1 className="mt-2 text-4xl font-semibold text-gray-50">
+              ToDo
+            </h1>
+            </Header>
           <Content className="h-[83vh]">
             <ContextProvider>
             <div className="md:flex md:justify-center">

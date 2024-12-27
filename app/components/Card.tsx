@@ -5,17 +5,16 @@ import { Card } from "antd";
 import React, { useContext,  useState } from "react";
 import { DataMock } from "../context/ContextProvider";
 
-function CardList({ id, titulo }) {
+function CardList({id}) {
     const {mock, setMock, messageApi} = useContext(DataMock)
-    const {confirm} = Modal
     const [isEdtting, setIsEditing] = useState(false);
     const [editValue, setEditValue] = useState('');
 
     const cardMock = mock.find((e)=> e.id == id)
 
     const handleDeleteButton = (id:number)=>{
-        console.log(id)
         setMock(mock.filter((e)=> e.id !== id))
+        messageApi.success('Tarefa removida com sucesso!')
     }
     const handleCompletedTask = ()=>{
         const task = mock.map((e)=>{
@@ -31,7 +30,7 @@ function CardList({ id, titulo }) {
 
     const handleEditTask = ()=>{
         setIsEditing(true)
-        setEditValue(titulo)
+        setEditValue(cardMock.titulo)
     }
 
     const confirmEdit = () =>{
@@ -79,7 +78,7 @@ function CardList({ id, titulo }) {
                     </>
                     : 
                     <>
-                    <h1>{titulo}</h1>
+                    <h1>{cardMock.titulo}</h1>
                     </>
                     }
                 </div>
@@ -104,11 +103,11 @@ function CardList({ id, titulo }) {
             <div className="flex justify-between items-center text-red-950">
                 <div onClick={handleCompletedTask} className="flex space-x-2 cursor-pointer">
                     <Checkbox  className="range" checked={cardMock.completed} />
-                    <h1 className="text-gray-600"><s>{titulo} </s></h1>
+                    <h1 className="text-gray-600"><s>{cardMock.titulo} </s></h1>
                 </div>
                 <div className="space-x-2">
                     {/* <Button color="default" variant="outlined" style={{backgroundColor:"whitesmoke"}} onClick={()=>{handleDeleteButton(id)}}><EditOutlined style={{color:'GrayText'}}/></Button> */}
-                    <Button color="default" variant="outlined" className="hover:border-red-400" onClick={()=>{handleDeleteButton(id)}}><DeleteOutlined style={{color:'GrayText'}}/></Button>
+                    <Button color="default" variant="outlined" className="hover:border-red-400" onClick={()=>{setShowModalDelete(true)}}><DeleteOutlined style={{color:'GrayText'}}/></Button>
 
                 </div>
             </div>

@@ -41,7 +41,7 @@ function Page() {
         <p>Concluídas: {mock.filter((e)=> e.completed == true).length}</p>
       </div>
       {mock.map((e)=>{
-       return <Card key={e.id} id={e.id} titulo={e.titulo}/>
+       return <Card key={e.id} id={e.id}/>
       })}
     </div>
     </>

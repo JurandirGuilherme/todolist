@@ -10,7 +10,6 @@ function Page() {
    const [form] = Form.useForm();
 
   const onFinish = async ()=>{
-    console.log(form.getFieldsValue().titulo.trim())
     if (form.getFieldsValue().titulo == undefined || form.getFieldsValue().titulo.trim().length == 0) {
       messageApi.error('Nome da tarefa não pode estar vazio!')
       return form.resetFields();

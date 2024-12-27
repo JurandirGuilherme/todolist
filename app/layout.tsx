@@ -33,9 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-[100%] bg-[#f5f5f5]`}
       >
-        <Layout className={"min:h-full flex h-[100vh] dark:bg-[#1c1c1c] " + (darkTheme && 'dark')}>
+        <Layout className={"flex h-[100vh] dark:bg-[#1c1c1c] " + (darkTheme && 'dark')}>
           <Header className=" bg-blue-700 flex justify-center items-center min-h-24 mb-9 dark:bg-black">
 
             <h1 className="mt-2 flex text-4xl font-semibold text-gray-50 dark:text-indigo-400 w-full justify-center">
@@ -45,7 +45,7 @@ export default function RootLayout({
             <Switch checkedChildren={<SunOutlined />} className="bg-blue-500 dark:bg-indigo-700" unCheckedChildren={<MoonOutlined />} onChange={()=>{setDarkTheme(!darkTheme)}}/>
             </div>
             </Header>
-          <Content className="">
+          <Content className="h-full">
             <ContextProvider>
             <div className="md:flex md:justify-center">
               {children}

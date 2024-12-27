@@ -6,13 +6,13 @@ import { Button, Form, Input } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 function Page() {
-  const { mock, setMock } = useContext(DataMock);
+  const { mock, setMock, messageApi } = useContext(DataMock);
    const [form] = Form.useForm();
 
-  const onFinish = ()=>{
-    console.log(form.getFieldsValue())
+  const onFinish = async ()=>{
+    if (form.getFieldsValue().titulo == undefined) return messageApi.error('Nome da tarefa não pode estar vazio!')
     setMock([...mock, {id: Math.random(), ...form.getFieldsValue(), completed: false}])
-    form.resetFields();
+    form.resetFields();  
   }
 
 

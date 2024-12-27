@@ -10,7 +10,11 @@ function Page() {
    const [form] = Form.useForm();
 
   const onFinish = async ()=>{
-    if (form.getFieldsValue().titulo == undefined) return messageApi.error('Nome da tarefa não pode estar vazio!')
+    console.log(form.getFieldsValue().titulo.trim())
+    if (form.getFieldsValue().titulo == undefined || form.getFieldsValue().titulo.trim().length == 0) {
+      messageApi.error('Nome da tarefa não pode estar vazio!')
+      return form.resetFields();
+    }
     setMock([...mock, {id: Math.random(), ...form.getFieldsValue(), completed: false}])
     form.resetFields();  
   }

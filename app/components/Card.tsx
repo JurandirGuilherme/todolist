@@ -35,7 +35,7 @@ function CardList({id}) {
 
     const confirmEdit = () =>{
         if (editValue == cardMock.titulo) return setIsEditing(false)
-        if (editValue == '') return messageApi.error('Nome da tarefa não pode estar vazio.')
+        if (editValue == '' || editValue.trim().length == 0) return messageApi.error('Nome da tarefa não pode estar vazio.')
         const task = mock.map((e)=>{
             if (e.id == id){
                 const {...items} = e
